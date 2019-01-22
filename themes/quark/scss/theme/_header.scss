@@ -47,24 +47,13 @@
   .navbar-section {
     height: $header-height-large;
     @extend .default-animation;
-
-    @include breakpoint(md) {
-      margin-right: 2rem;
-    }
   }
 
-  .navbar-section.desktop-menu {
-    @include breakpoint(md) {
-      display: none;
-    }
-  }
+  .logo svg {
+    width: 150px;
+    display: inherit;
 
-  .logo {
-    svg, img {
-      height: 42px;
-      display: inherit;
-      @extend .default-animation;
-    }
+    @extend .default-animation;
   }
 
   // Fixed Header solution
@@ -84,10 +73,8 @@ body.header-fixed.header-animated {
       height: $header-height-small;
     }
 
-    .logo {
-      svg, img {
-        height: 28px;
-      }
+    .logo svg {
+      width: 100px;
     }
 
     ~ .mobile-menu .button_container {
@@ -98,4 +85,8 @@ body.header-fixed.header-animated {
 
 .login-status-wrapper {
   white-space: nowrap;
+
+  .icon {
+    font-size: 120%;
+  }
 }

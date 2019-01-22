@@ -1,7 +1,7 @@
 // Background color utility mixin
 @mixin bg-color-variant($name: ".bg-primary", $color: $primary-color) {
   #{$name} {
-    background: $color !important;
+    background: $color;
 
     @if (lightness($color) < 60) {
       color: $light-color;
@@ -12,16 +12,13 @@
 // Text color utility mixin
 @mixin text-color-variant($name: ".text-primary", $color: $primary-color) {
   #{$name} {
-    color: $color !important;
+    color: $color;
   }
 
   a#{$name} {
     &:focus,
     &:hover {
       color: darken($color, 5%);
-    }
-    &:visited {
-      color: lighten($color, 5%);
     }
   }
 }

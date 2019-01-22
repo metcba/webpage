@@ -15,7 +15,6 @@ $icon-prefix: "icon";
   width: 1em;
   &::before,
   &::after {
-    content: "";
     display: block;
     left: 50%;
     position: absolute;

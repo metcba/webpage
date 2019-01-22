@@ -11,6 +11,7 @@
     border: $icon-border-width solid currentColor;
     border-bottom: 0;
     border-right: 0;
+    content: "";
     height: .65em;
     width: .65em;
   }
@@ -44,6 +45,7 @@
 .icon-forward {
   &::after {
     background: currentColor;
+    content: "";
     height: $icon-border-width;
     width: .8em;
   }
@@ -53,6 +55,7 @@
 .icon-upward {
   &::after {
     background: currentColor;
+    content: "";
     height: .8em;
     width: $icon-border-width;
   }
@@ -100,6 +103,7 @@
     border-top: .3em solid currentColor;
     border-right: .3em solid transparent;
     border-left: .3em solid transparent;
+    content: "";
     height: 0;
     transform: translate(-50%, -25%);
     width: 0;
@@ -111,6 +115,7 @@
   &::before {
     background: currentColor;
     box-shadow: 0 -.35em, 0 .35em;
+    content: "";
     height: $icon-border-width;
     width: 100%;
   }
@@ -121,6 +126,7 @@
   &::before {
     background: currentColor;
     box-shadow: -.35em -.35em, -.35em 0, -.35em .35em, 0 -.35em, 0 .35em, .35em -.35em, .35em 0, .35em .35em;
+    content: "";
     height: 3px;
     width: 3px;
   }

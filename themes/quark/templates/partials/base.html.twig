@@ -1,6 +1,6 @@
 {% set body_classes = body_class(['header-fixed', 'header-animated', 'header-dark', 'header-transparent', 'sticky-footer']) %}
 {% set grid_size = theme_var('grid-size') %}
-{% set compress = theme_var('production-mode') ? '.min.css' : '.css' %}
+{% set compress = theme_var('production_mode') ? '.min.css' : '.css' %}
 <!DOCTYPE html>
 <html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
 <head>
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'partials/metadata.html.twig' %}
 
-    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.ico') }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
 
     {% block stylesheets %}
@@ -23,14 +23,14 @@
         {% do assets.addCss('theme://css/custom.css') %}
         {% do assets.addCss('theme://css/line-awesome.min.css') %}
     {% endblock %}
-    {{ assets.css()|raw }}
+    {{ assets.css() }}
 
     {% block javascripts %}
         {% do assets.addJs('jquery', 101) %}
         {% do assets.addJs('theme://js/jquery.treemenu.js', {group:'bottom'}) %}
         {% do assets.addJs('theme://js/site.js', {group:'bottom'}) %}
     {% endblock %}
-    {{ assets.js()|raw }}
+    {{ assets.js() }}
 
 {% endblock head %}
 </head>
@@ -41,14 +41,14 @@
             <section class="container {{ grid_size }}">
                 <nav class="navbar">
                     <section class="navbar-section logo">
-                        {% include 'partials/logo.html.twig' %}
+                        <a href="{{ home_url }}" class="navbar-brand mr-10">{% include('@images/met_logo.svg') %}</a>
                     </section>
-                    <section class="navbar-section desktop-menu">
+                    <section class="navbar-section">
 
                         <nav class="dropmenu animated">
-                        {% block header_navigation %}
-                            {% include 'partials/navigation.html.twig' %}
-                        {% endblock %}
+                            {% block header_navigation %}
+                        {% include 'partials/navigation.html.twig' %}
+                            {% endblock %}
                         </nav>
 
                         {% if config.plugins.login.enabled and grav.user.username %}
@@ -85,14 +85,28 @@
 
     </div>
 
-    {% block footer %}
-        {% include 'partials/footer.html.twig' %}
-    {% endblock %}
-    
+{% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center social-icons">
+                    <span>Contact us</span>
+                    <a href="#"><i class="la la-envelope"></i></a>
+                    <a href="#"><i class="la la-twitter"></i></a>
+                </div>
+                <div class="column col-lg-4 col-md-4 col-sm-6 col-xs-12 col-ml-auto text-center">
+                    <img src="{{ url('theme://images/met_logo_no_line.png') }}"/>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+
     <div class="mobile-container">
         <div class="overlay" id="overlay">
             <div class="mobile-logo">
-                {% include 'partials/logo.html.twig' with {mobile: true} %}
+                {% include('@images/met_logo.svg') %}
             </div>
             <nav class="overlay-menu">
                 {% include 'partials/navigation.html.twig' with {tree: true} %}
@@ -101,8 +115,7 @@
     </div>
 
 {% block bottom %}
-    {{ assets.js('bottom')|raw }}
+    {{ assets.js('bottom') }}
 {% endblock %}
 
 </body>
-</html>
